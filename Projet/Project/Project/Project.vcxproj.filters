@@ -43,5 +43,11 @@
     <Text Include="light_cubeV.vert">
       <Filter>Fichiers sources</Filter>
     </Text>
+    <Text Include="Wall.frag">
+      <Filter>Fichiers sources</Filter>
+    </Text>
+    <Text Include="Wall.vert">
+      <Filter>Fichiers sources</Filter>
+    </Text>
   </ItemGroup>
 </Project>
