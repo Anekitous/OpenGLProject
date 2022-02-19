@@ -44,4 +44,8 @@
       <Filter>Fichiers sources</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="skybox.vert" />
+    <None Include="skybox.frag" />
+  </ItemGroup>
 </Project>
