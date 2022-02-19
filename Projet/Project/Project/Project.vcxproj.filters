@@ -49,5 +49,11 @@
     <Text Include="Wall.vert">
       <Filter>Fichiers sources</Filter>
     </Text>
+    <Text Include="skybox.frag">
+      <Filter>Fichiers sources</Filter>
+    </Text>
+    <Text Include="skybox.vert">
+      <Filter>Fichiers sources</Filter>
+    </Text>
   </ItemGroup>
 </Project>

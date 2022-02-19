@@ -154,6 +154,8 @@
     <Text Include="Objet.vert" />
     <Text Include="light_cubeF.frag" />
     <Text Include="light_cubeV.vert" />
+    <Text Include="skybox.frag" />
+    <Text Include="skybox.vert" />
     <Text Include="Wall.frag" />
     <Text Include="Wall.vert" />
   </ItemGroup>
