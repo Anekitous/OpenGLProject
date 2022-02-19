@@ -58,3 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 Projet/Project/.vs/Project/v16/Browse.VC.db
+*.db
+*.db
