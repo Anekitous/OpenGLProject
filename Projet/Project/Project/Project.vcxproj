@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\hugog\OneDrive\Bureau\E5\OpenGL\tests\glfw-3.3.6\include\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\hugog\OneDrive\Bureau\E5\OpenGL\tests\glfw-3.3.6\include\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Project\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Project\Dependencies\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
