@@ -1,0 +1,10 @@
+^C:\USERS\HUGOG\ONEDRIVE\BUREAU\E5\OPENGL\TESTS\GLFW-3.3.6\SRC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/hugog/OneDrive/Bureau/E5/OpenGL/tests/glfw-3.3.6 -BC:/Users/hugog/OneDrive/Bureau/E5/OpenGL/tests/glfw-3.3.6/build --check-stamp-file C:/Users/hugog/OneDrive/Bureau/E5/OpenGL/tests/glfw-3.3.6/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
