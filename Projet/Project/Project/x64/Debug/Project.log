@@ -1,1 +1,6 @@
-﻿  Project.vcxproj -> C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\Project.exe
+﻿  glad.c
+  Source.cpp
+  LightTuto.cpp
+F:\Minecraft2\vs_community__c770da9d.2d5c.459d.91b6.e3e2d6e76a15.exe\Projet\Project\Project\Dependencies\include\shader\shader_s.h(94,55): warning C4244: 'argument' : conversion de 'float' en 'GLint', perte possible de données
+  Génération de code en cours...
+  Project.vcxproj -> F:\Minecraft2\vs_community__c770da9d.2d5c.459d.91b6.e3e2d6e76a15.exe\Projet\Project\x64\Debug\Project.exe
