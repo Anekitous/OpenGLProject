@@ -1,5 +1,5 @@
 #version 420 core
-#define NBLamp 3
+#define NBLamp 6
 
 in vec3 Normal;
 in vec3 FragPos;
@@ -23,7 +23,7 @@ uniform sampler2D ourTexture;
 
 void main()
 {
-    float ambientStrength = 0.01f;
+    float ambientStrength = 0.02f;
     vec4 ambient = ambientStrength * vec4(1.0,1.0,1.0,1.0);
     vec3 result = vec3(0.0);
     vec3 norm;

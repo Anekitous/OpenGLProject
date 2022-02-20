@@ -33,12 +33,13 @@ void DrawGround(Shader ObjectShader, unsigned int VAO, glm::vec3 wallPos);
 unsigned int genTextureFromPath(const char* texturePath);
 void setupSkybox(Shader skyboxShader, unsigned int skyboxVAO, unsigned int cubemapTexture);
 unsigned int loadCubemap(std::vector<std::string> faces);
+void DrawEye(Shader eyeShader, Model eyeModel, glm::vec3 eyePos, int lampIndex);
 
 
 
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 1280;
+const unsigned int SCR_HEIGHT = 720;
 
 // camera
 Camera camera(glm::vec3(5.0f, 0.0f, -3.0f));
@@ -111,6 +112,7 @@ int main()
     Shader lightCubeShader("light_cubeV.vert", "light_cubeF.frag");
     Shader wallShader("Wall.vert", "Wall.frag");
     Shader skyboxShader("skybox.vert", "skybox.frag");
+    Shader modelShader("model.vert", "model.frag");
 
     brickTexture = genTextureFromPath("texture/brick.jpg");
     earthTexture = genTextureFromPath("texture/earth.jpg");
@@ -118,7 +120,9 @@ int main()
     woodTexture = genTextureFromPath("texture/wood.jpg");
 
     // Loading model
-    Model model1("resources/objects/backpack/backpack.obj");
+    Model eyeModel("resources/objets/eye/bigEye.obj");
+    //Model model1("resources/objets/backpack/backpack.obj");
+    
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -285,22 +289,57 @@ int main()
 
     std::vector<std::string> faces
     {
-        "skybox/right.jpg",
-        "skybox/left.jpg",
-        "skybox/top.jpg",
-        "skybox/bottom.jpg",
-        "skybox/front.jpg",
-        "skybox/back.jpg"
+        "skybox/day/right.jpg",
+        "skybox/day/left.jpg",
+        "skybox/day/top.jpg",
+        "skybox/day/bottom.jpg",
+        "skybox/day/front.jpg",
+        "skybox/day/back.jpg"
     };
     unsigned int cubemapTexture = loadCubemap(faces);
 
-    
-    Light MainLamp = Light::Light(glm::vec3(7.5, 1.0, -2.5), glm::vec3(1.0,1.0,1.0), 0.5, 2);
-    lightList.push_back(MainLamp);
-    Light SecondLamp = Light::Light(glm::vec3(7.5, 1.0, -7.5), glm::vec3(1.0, 1.0, 1.0), 0.5, 2);
-    lightList.push_back(SecondLamp);
+    std::vector<std::string> facesNight1
+    {
+        "skybox/nightskybox1/right.jpg",
+        "skybox/nightskybox1/left.jpg",
+        "skybox/nightskybox1/top.jpg",
+        "skybox/nightskybox1/bottom.jpg",
+        "skybox/nightskybox1/front.jpg",
+        "skybox/nightskybox1/back.jpg"
+    };
+    unsigned int cubemapTextureNight1 = loadCubemap(facesNight1);
 
-    Light SpotLight = Light::Light(glm::vec3(7.5, 3.0f, -7.0), glm::vec3(1.0, 1.0, 1.0), 1.0, 5, glm::vec3(0.0, -1.0, 0.0), 20.0f, 30.0f, true);
+    std::vector<std::string> facesNight
+    {
+        "skybox/nightskybox2/right.jpg",
+        "skybox/nightskybox2/left.jpg",
+        "skybox/nightskybox2/top.jpg",
+        "skybox/nightskybox2/bottom.jpg",
+        "skybox/nightskybox2/front.jpg",
+        "skybox/nightskybox2/back.jpg"
+    };
+    unsigned int cubemapTextureNight = loadCubemap(facesNight);
+
+    
+    //Light MainLamp = Light::Light(glm::vec3(7.5, 1.0, -2.5), glm::vec3(1.0,1.0,1.0), 3, 2);
+    //lightList.push_back(MainLamp);
+
+    Light RedLight1 = Light::Light(glm::vec3(-0.5, 1.2, 0.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(RedLight1);
+
+    Light RedLight2 = Light::Light(glm::vec3(-0.5, 1.2, -14.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(RedLight2);
+
+    Light RedLight3 = Light::Light(glm::vec3(14.5, 1.2, -14.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(RedLight3);
+
+    Light RedLight4 = Light::Light(glm::vec3(14.5, 1.2, 0.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(RedLight4);
+
+    Light eyeLamp = Light::Light(glm::vec3(7.5, -0.3, -7), glm::vec3(1.0, 0.0, 0.0), 10, 2, glm::vec3(0.0,0.0,-1.0), 10, 7, true);
+    lightList.push_back(eyeLamp);
+
+    Light SpotLight = Light::Light(glm::vec3(7.5, 4.0f, -7.0), glm::vec3(1.0, 1.0, 1.0), 2.0, 5, glm::vec3(0.0, -1.0, -0.4), 40.0f, 50.0f, true);
     lightList.push_back(SpotLight);
 
 
@@ -325,12 +364,23 @@ int main()
 
         // Draw the lamp object
         setupLightSource(lightCubeShader, lightCubeVAO);
-        //DrawCube(lightCubeVAO);
-        //setupLightSource(lightCubeShader);
-        //DrawCube(lightCubeVAO);
+
+        
 
         // Draw Terrain
         //DrawTerrain(lightingShader, cubeVAO, 15, cubePos);
+        /*
+        wallShader.use();
+        // render the loaded model
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(7.5f, -0.5f, -7.0f));
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+        model = glm::rotate(model, 30 * glm::radians((float)glfwGetTime()), glm::vec3(0.0, 1.0, 0.0));
+        wallShader.setMat4("model", model);
+        eyeModel.Draw(wallShader);
+        */
+
+        DrawEye(wallShader, eyeModel, glm::vec3(7.5f, -0.5f, -7.0f), 4);
 
         // Draw Walls
         glBindTexture(GL_TEXTURE_2D, 1);
@@ -338,16 +388,12 @@ int main()
 
         // Draw Ground
         glBindTexture(GL_TEXTURE_2D, 4);
-        DrawGround(wallShader, wallVAO, cubePos);
+        DrawGround(wallShader, wallVAO, cubePos);   
 
-        //setupSkybox(skyboxShader, skyboxVAO, cubemapTexture);
+        // Draw skybox
+        setupSkybox(skyboxShader, skyboxVAO, cubemapTextureNight1);
 
-        // render the loaded model
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-        wallShader.setMat4("model", model);
-        model1.Draw(wallShader);
+        
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -421,6 +467,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 void setupLightSource(Shader lightSourceShader, unsigned int VAO) {
     lightSourceShader.use();
+    lightList[5].setStrength(abs(sin(glfwGetTime())));
     for (int i = 0; i < lightList.size(); i++) {
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
@@ -430,7 +477,7 @@ void setupLightSource(Shader lightSourceShader, unsigned int VAO) {
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, lightList[i].lightPos);
         model = glm::scale(model, glm::vec3(0.1f));
-        glUniformMatrix4fv(glGetUniformLocation(lightSourceShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glUniformMatrix4fv(glGetUniformLocation(lightSourceShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));        
         DrawCube(VAO);
     }    
 }
@@ -612,4 +659,25 @@ unsigned int loadCubemap(std::vector<std::string> faces)
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
     return textureID;
+}
+
+void DrawEye(Shader eyeShader, Model eyeModel, glm::vec3 eyePos, int lampIndex) {
+    eyeShader.use();
+    // render the loaded model
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    glm::mat4 view = camera.GetViewMatrix();
+    eyeShader.setMat4("projection", projection);
+    eyeShader.setMat4("view", view);
+    glm::mat4 model = glm::mat4(1.0f);
+    glm::vec3 posCam = camera.getPosition();
+    float angle;
+    model = glm::translate(model, eyePos);
+    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+    angle = atan2f(eyePos.x - posCam.x, eyePos.z - posCam.z) + glm::radians(180.0f);
+    
+    lightList[lampIndex].setAngle(glm::vec3(posCam.x - eyePos.x, 0.0, posCam.z - eyePos.z));
+    model = glm::rotate(model, angle, glm::vec3(0, 1, 0));
+    glUniformMatrix4fv(glGetUniformLocation(eyeShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
+
+    eyeModel.Draw(eyeShader);
 }

@@ -55,5 +55,14 @@
     <Text Include="skybox.vert">
       <Filter>Fichiers sources</Filter>
     </Text>
+    <Text Include="model.frag">
+      <Filter>Fichiers sources</Filter>
+    </Text>
+    <Text Include="model.vert">
+      <Filter>Fichiers sources</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

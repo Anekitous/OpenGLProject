@@ -39,6 +39,14 @@ public:
 		outerCutOff = _outerCutOff;
 		isSpot = _isSpot;
 	}
+
+	void setAngle(glm::vec3 angle) {
+		spotDir = angle;
+	}
+
+	void setStrength(float _strength) {
+		strength = _strength;
+	}
 };
 
 #endif

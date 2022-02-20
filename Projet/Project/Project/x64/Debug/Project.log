@@ -1,4 +1,12 @@
-﻿glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouvé avec 'glfw3.lib(context.obj)' ou sur 'C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\glfw3.pdb' ; l'objet sera lié sans informations de débogage
+﻿  LightTuto.cpp
+C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\Project\Dependencies\include\shader\shader_s.h(49,7): warning C4101: 'succes' : variable locale non référencée
+C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\Project\Dependencies\include\shader\shader_s.h(50,8): warning C4101: 'infoLog' : variable locale non référencée
+C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\Project\LightTuto.cpp(339,129): warning C4305: 'argument' : troncation de 'int' à 'bool'
+C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\Project\LightTuto.cpp(342,144): warning C4305: 'argument' : troncation de 'float' à 'bool'
+C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\Project\LightTuto.cpp(470,33): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\Project\LightTuto.cpp(511,32): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\Project\LightTuto.cpp(512,36): warning C4018: '<' : incompatibilité signed/unsigned
+glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouvé avec 'glfw3.lib(context.obj)' ou sur 'C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\glfw3.pdb' ; l'objet sera lié sans informations de débogage
 glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouvé avec 'glfw3.lib(init.obj)' ou sur 'C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\glfw3.pdb' ; l'objet sera lié sans informations de débogage
 glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouvé avec 'glfw3.lib(input.obj)' ou sur 'C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\glfw3.pdb' ; l'objet sera lié sans informations de débogage
 glfw3.lib(monitor.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouvé avec 'glfw3.lib(monitor.obj)' ou sur 'C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\glfw3.pdb' ; l'objet sera lié sans informations de débogage
@@ -14,3 +22,5 @@ glfw3.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouv
 glfw3.lib(egl_context.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouvé avec 'glfw3.lib(egl_context.obj)' ou sur 'C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\glfw3.pdb' ; l'objet sera lié sans informations de débogage
 glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB 'glfw3.pdb' n'a pu être trouvé avec 'glfw3.lib(osmesa_context.obj)' ou sur 'C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\glfw3.pdb' ; l'objet sera lié sans informations de débogage
   Project.vcxproj -> C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\Project.exe
+  Copying native Assimp libraries...
+  C:\Users\hugog\OneDrive\Documents\GitHub\OpenGLProject\Projet\Project\x64\Debug\Project.deps.json

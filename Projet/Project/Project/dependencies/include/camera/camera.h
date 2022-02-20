@@ -83,12 +83,22 @@ public:
         tempPosition.y = 0.0f;
         tempPosition = velocity * glm::normalize(tempPosition) + Position;
 
+        
         if (tempPosition.x < 14.0 && tempPosition.x > 0.0f) {
-            Position.x = tempPosition.x;
+            if ((tempPosition.x < 5.8 || tempPosition.x > 8.7f) || (tempPosition.z > -5.3 || tempPosition.z < -8.2f)) {
+                Position.x = tempPosition.x;
+            }            
         }
         if (tempPosition.z < 0 && tempPosition.z > -14.0f) {
-            Position.z = tempPosition.z;
+            if ((tempPosition.x < 5.8 || tempPosition.x > 8.7f) || (tempPosition.z > -5.3 || tempPosition.z < -8.2f)) {
+                Position.z = tempPosition.z;
+            }
         }
+        
+    }
+
+    glm::vec3 getPosition() {
+        return this->Position;
     }
 
     // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
