@@ -121,6 +121,7 @@ int main()
 
     // Loading model
     Model eyeModel("resources/objets/eye/bigEye.obj");
+    //Model secret("resources/objets/secret/secret.obj");
     //Model model1("resources/objets/backpack/backpack.obj");
     
 
@@ -309,7 +310,7 @@ int main()
     };
     unsigned int cubemapTextureNight1 = loadCubemap(facesNight1);
 
-    std::vector<std::string> facesNight
+    std::vector<std::string> facesNight2
     {
         "skybox/nightskybox2/right.jpg",
         "skybox/nightskybox2/left.jpg",
@@ -318,7 +319,7 @@ int main()
         "skybox/nightskybox2/front.jpg",
         "skybox/nightskybox2/back.jpg"
     };
-    unsigned int cubemapTextureNight = loadCubemap(facesNight);
+    unsigned int cubemapTextureNight2 = loadCubemap(facesNight2);
 
     
     //Light MainLamp = Light::Light(glm::vec3(7.5, 1.0, -2.5), glm::vec3(1.0,1.0,1.0), 3, 2);
@@ -391,7 +392,7 @@ int main()
         DrawGround(wallShader, wallVAO, cubePos);   
 
         // Draw skybox
-        setupSkybox(skyboxShader, skyboxVAO, cubemapTextureNight1);
+        setupSkybox(skyboxShader, skyboxVAO, cubemapTextureNight2);
 
         
 
