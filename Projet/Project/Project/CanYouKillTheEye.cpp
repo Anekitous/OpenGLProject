@@ -330,17 +330,17 @@ int main()
     //Light MainLamp = Light::Light(glm::vec3(7.5, 1.0, -2.5), glm::vec3(1.0,1.0,1.0), 3, 2);
     //lightList.push_back(MainLamp);
 
-    Light RedLight1 = Light::Light(glm::vec3(-0.5, 1.2, 0.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
-    lightList.push_back(RedLight1);
+    Light GreenLight1 = Light::Light(glm::vec3(-0.5, 1.2, 0.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(GreenLight1);
 
-    Light RedLight2 = Light::Light(glm::vec3(-0.5, 1.2, -14.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
-    lightList.push_back(RedLight2);
+    Light GreenLight2 = Light::Light(glm::vec3(-0.5, 1.2, -14.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(GreenLight2);
 
-    Light RedLight3 = Light::Light(glm::vec3(14.5, 1.2, -14.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
-    lightList.push_back(RedLight3);
+    Light GreenLight3 = Light::Light(glm::vec3(14.5, 1.2, -14.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(GreenLight3);
 
-    Light RedLight4 = Light::Light(glm::vec3(14.5, 1.2, 0.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
-    lightList.push_back(RedLight4);
+    Light GreenLight4 = Light::Light(glm::vec3(14.5, 1.2, 0.5), glm::vec3(0.2, 0.6, 0.1), 1, 3);
+    lightList.push_back(GreenLight4);
 
     Light eyeLamp = Light::Light(glm::vec3(7.5, -0.3, -7), glm::vec3(1.0, 0.0, 0.0), 10, 2, glm::vec3(0.0,0.0,-1.0), 10, 7, true);
     lightList.push_back(eyeLamp);
@@ -674,7 +674,11 @@ void DrawEye(Shader eyeShader, Model eyeModel, glm::vec3 eyePos, int lampIndex) 
     eyeShader.use();
     // render the loaded model
     if (totalAngle > 4 * glm::radians(360.0f)) {
+        for (int i = 0; i < 4; i++) {
+            lightList[i].setStrength(5);
+        }
         lightList[lampIndex].setStrength(0);
+        lightList[5].setStrength(0);
         return;
     }
     glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
