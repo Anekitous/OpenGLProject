@@ -10,3 +10,5 @@ Nous avons ajouté différents types de lumières. Des lumières ponctuelles pr�
 Une lumière spotlight est aussi utilisée par l'oeil et son tracking de la caméra.
 #
 Nous sommes 3 à avoir travailler sur ce projet (Maxime Schoenberger, Théo Seusse, Hugo Guerif).
+
+![image](https://user-images.githubusercontent.com/50584645/154852736-92a971e5-4c8a-4150-a5c8-6a0c695290f5.png)
