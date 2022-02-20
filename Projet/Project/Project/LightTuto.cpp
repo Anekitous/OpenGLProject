@@ -6,9 +6,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include <shader/shader_s.h>
 #include <camera/camera.h>
 #include <light/Light.h>
+#include <mesh/mesh.h>
+#include <model/model.h>
 
 #include <iostream>
 #include <list>
@@ -110,6 +116,9 @@ int main()
     earthTexture = genTextureFromPath("texture/earth.jpg");
     stoneTexture = genTextureFromPath("texture/stone.jpg");
     woodTexture = genTextureFromPath("texture/wood.jpg");
+
+    // Loading model
+    Model model1("resources/objects/backpack/backpack.obj");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -291,7 +300,7 @@ int main()
     Light SecondLamp = Light::Light(glm::vec3(7.5, 1.0, -7.5), glm::vec3(1.0, 1.0, 1.0), 0.5, 2);
     lightList.push_back(SecondLamp);
 
-    Light SpotLight = Light::Light(glm::vec3(7.5, 3.0f, -7.0), glm::vec3(1.0, 1.0, 1.0), 1.0, 5, glm::vec3(0.0, -1.0, 0.0), 50.0f, 70.0f, true);
+    Light SpotLight = Light::Light(glm::vec3(7.5, 3.0f, -7.0), glm::vec3(1.0, 1.0, 1.0), 1.0, 5, glm::vec3(0.0, -1.0, 0.0), 20.0f, 30.0f, true);
     lightList.push_back(SpotLight);
 
 
@@ -332,6 +341,13 @@ int main()
         DrawGround(wallShader, wallVAO, cubePos);
 
         //setupSkybox(skyboxShader, skyboxVAO, cubemapTexture);
+
+        // render the loaded model
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+        wallShader.setMat4("model", model);
+        model1.Draw(wallShader);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
