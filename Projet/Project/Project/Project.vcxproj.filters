@@ -21,7 +21,7 @@
     <ClCompile Include="Source.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="LightTuto.cpp">
+    <ClCompile Include="CanYouKillTheEye.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
