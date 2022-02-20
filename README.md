@@ -11,6 +11,6 @@ Une lumière spotlight est aussi utilisée par l'oeil et son tracking de la cam�
 #
 Nous sommes 3 à avoir travailler sur ce projet (Maxime Schoenberger, Théo Seusse, Hugo Guerif).
 #
-Nous avons essayé de travailler sous Linux, sans succès. Nous avons donc réalisé un projet sour Visual Studio.
+Nous avons essayé de travailler sous Linux, sans succès. Nous avons donc réalisé un projet sous Visual Studio.
 
 ![image](https://user-images.githubusercontent.com/50584645/154852736-92a971e5-4c8a-4150-a5c8-6a0c695290f5.png)
